@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Movies_E_Tiket.Models;
+using System.Drawing;
 
 namespace Movies_E_Tiket.Data
 {
@@ -20,6 +21,7 @@ namespace Movies_E_Tiket.Data
 
             modelBuilder.Entity<Actor_Movie>().HasOne(m => m.Movie).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.MovieId);
             modelBuilder.Entity<Actor_Movie>().HasOne(m => m.Actor).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.ActorId);
+
 
             base.OnModelCreating(modelBuilder);
 
