@@ -20,21 +20,23 @@ namespace Movies_E_Tiket.Models
         public List<Actor_Movie> Actors_Movies { get; set; }
 
         //public List<Cinema>  Cinemas { get; set; }
-
-        public virtual ICollection<Cinema> Cinemas {  get; set; }   
-
-
-
-       /* //Cinema
-        public int CinemaId { get; set; }
-        [ForeignKey("CinemaId")]
-        public Cinema Cinema { get; set; }
+        [NotMapped]
+        public virtual ICollection<Cinema> Cinemas {  get; set; }
+        /*public int CinemaId { get; internal set; }
+        public int ProducerId { get; internal set; }*/
 
 
 
-        //Producer
-        public int ProducerId { get; set; }
-        [ForeignKey("ProducerId")]
-        public Cinema Producer { get; set; }*/
+        //Cinema
+         public int CinemaId { get; set; }
+         [ForeignKey("CinemaId")]
+         public Cinema Cinema { get; set; }
+
+
+
+         //Producer
+         public int ProducerId { get; set; }
+         [ForeignKey("ProducerId")]
+         public Producer Producer { get; set; } 
     }
 }

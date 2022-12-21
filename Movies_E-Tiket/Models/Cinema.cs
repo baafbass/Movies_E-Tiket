@@ -13,8 +13,8 @@ namespace Movies_E_Tiket.Models
         public string Name { get; set; }
         public string Description { get; set; }
         //Relationships
-       // public List<Movie> Movies { get; set; }
-
+        // public List<Movie> Movies { get; set; }
+        [NotMapped]
         public ICollection<Movie> Movies { get; set; }
 
     }
