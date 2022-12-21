@@ -12,7 +12,7 @@ using Movies_E_Tiket.Data;
 namespace MoviesETiket.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221220191430_İnitial")]
+    [Migration("20221221154157_İnitial")]
     partial class İnitial
     {
         /// <inheritdoc />

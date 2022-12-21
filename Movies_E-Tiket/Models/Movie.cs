@@ -19,11 +19,13 @@ namespace Movies_E_Tiket.Models
         //Relationship
         public List<Actor_Movie> Actors_Movies { get; set; }
 
+        //public List<Cinema>  Cinemas { get; set; }
+
         public virtual ICollection<Cinema> Cinemas {  get; set; }   
 
 
 
-        /*//Cinema
+       /* //Cinema
         public int CinemaId { get; set; }
         [ForeignKey("CinemaId")]
         public Cinema Cinema { get; set; }
