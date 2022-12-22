@@ -12,7 +12,7 @@ using Movies_E_Tiket.Data;
 namespace MoviesETiket.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221221154157_İnitial")]
+    [Migration("20221222173338_İnitial")]
     partial class İnitial
     {
         /// <inheritdoc />
@@ -24,21 +24,6 @@ namespace MoviesETiket.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("CinemaMovie", b =>
-                {
-                    b.Property<int>("CinemasId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MoviesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CinemasId", "MoviesId");
-
-                    b.HasIndex("MoviesId");
-
-                    b.ToTable("CinemaMovie");
-                });
 
             modelBuilder.Entity("Movies_E_Tiket.Models.Actor", b =>
                 {
@@ -80,31 +65,6 @@ namespace MoviesETiket.Migrations
                     b.ToTable("Actors_Movies");
                 });
 
-            modelBuilder.Entity("Movies_E_Tiket.Models.Cinema", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Logo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Cinemas");
-                });
-
             modelBuilder.Entity("Movies_E_Tiket.Models.Movie", b =>
                 {
                     b.Property<int>("Id")
@@ -134,7 +94,7 @@ namespace MoviesETiket.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int?>("ProducerId")
+                    b.Property<int>("ProducerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
@@ -172,21 +132,6 @@ namespace MoviesETiket.Migrations
                     b.ToTable("Producers");
                 });
 
-            modelBuilder.Entity("CinemaMovie", b =>
-                {
-                    b.HasOne("Movies_E_Tiket.Models.Cinema", null)
-                        .WithMany()
-                        .HasForeignKey("CinemasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Movies_E_Tiket.Models.Movie", null)
-                        .WithMany()
-                        .HasForeignKey("MoviesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Movies_E_Tiket.Models.Actor_Movie", b =>
                 {
                     b.HasOne("Movies_E_Tiket.Models.Actor", "Actor")
@@ -208,9 +153,13 @@ namespace MoviesETiket.Migrations
 
             modelBuilder.Entity("Movies_E_Tiket.Models.Movie", b =>
                 {
-                    b.HasOne("Movies_E_Tiket.Models.Producer", null)
+                    b.HasOne("Movies_E_Tiket.Models.Producer", "Producer")
                         .WithMany("Movies")
-                        .HasForeignKey("ProducerId");
+                        .HasForeignKey("ProducerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Producer");
                 });
 
             modelBuilder.Entity("Movies_E_Tiket.Models.Actor", b =>

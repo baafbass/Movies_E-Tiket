@@ -23,13 +23,6 @@ namespace Movies_E_Tiket.Data
             modelBuilder.Entity<Actor_Movie>().HasOne(m => m.Actor).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.ActorId);
 
 
-            /*modelBuilder.Entity<Cinema>().HasMany(m => m.Movies)
-                           .WithRequired().HasForeignKey(con => con.);
-
-            modelBuilder.Entity<City>().HasMany(city => city.Connections)
-                                       .WithRequired().HasForeignKey(con => con.StartCityId);*/
-
-
 
             base.OnModelCreating(modelBuilder);
 
@@ -39,7 +32,6 @@ namespace Movies_E_Tiket.Data
         public DbSet<Movie> Movies {get;set;}
         public DbSet<Producer> Producers{ get; set; }
         public DbSet<Actor_Movie> Actors_Movies { get; set; }
-        public DbSet<Cinema> Cinemas { get; set; }
 
 
 

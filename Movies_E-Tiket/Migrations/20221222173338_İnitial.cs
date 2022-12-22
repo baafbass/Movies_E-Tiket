@@ -27,21 +27,6 @@ namespace MoviesETiket.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cinemas",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Logo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Cinemas", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Producers",
                 columns: table => new
                 {
@@ -69,7 +54,7 @@ namespace MoviesETiket.Migrations
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MovieCategory = table.Column<int>(type: "int", nullable: false),
-                    ProducerId = table.Column<int>(type: "int", nullable: true)
+                    ProducerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -78,7 +63,8 @@ namespace MoviesETiket.Migrations
                         name: "FK_Movies_Producers_ProducerId",
                         column: x => x.ProducerId,
                         principalTable: "Producers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -105,39 +91,10 @@ namespace MoviesETiket.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "CinemaMovie",
-                columns: table => new
-                {
-                    CinemasId = table.Column<int>(type: "int", nullable: false),
-                    MoviesId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CinemaMovie", x => new { x.CinemasId, x.MoviesId });
-                    table.ForeignKey(
-                        name: "FK_CinemaMovie_Cinemas_CinemasId",
-                        column: x => x.CinemasId,
-                        principalTable: "Cinemas",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CinemaMovie_Movies_MoviesId",
-                        column: x => x.MoviesId,
-                        principalTable: "Movies",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Actors_Movies_MovieId",
                 table: "Actors_Movies",
                 column: "MovieId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CinemaMovie_MoviesId",
-                table: "CinemaMovie",
-                column: "MoviesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Movies_ProducerId",
@@ -152,13 +109,7 @@ namespace MoviesETiket.Migrations
                 name: "Actors_Movies");
 
             migrationBuilder.DropTable(
-                name: "CinemaMovie");
-
-            migrationBuilder.DropTable(
                 name: "Actors");
-
-            migrationBuilder.DropTable(
-                name: "Cinemas");
 
             migrationBuilder.DropTable(
                 name: "Movies");
