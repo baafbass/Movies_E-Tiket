@@ -93,7 +93,7 @@ namespace Movies_E_Tiket.Data
                     });
                     context.SaveChanges();
                 }
-
+                //Movie
                 if (!context.Movies.Any())
                 {
                     context.Movies.AddRange(new List<Movie>()
