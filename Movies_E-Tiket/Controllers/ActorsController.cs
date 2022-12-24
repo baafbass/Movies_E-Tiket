@@ -17,7 +17,7 @@ namespace Movies_E_Tiket.Controllers
 
             var data= _context.Actors.ToList();
 
-            return View();
+            return View(data);
         }
     }
 }
