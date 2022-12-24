@@ -29,19 +29,6 @@ namespace Movies_E_Tiket.Controllers
             return View();
         }
 
-
-        /*[HttpPost]
-        public async Task<IActionResult> Create([Bind("FullName,ProfilePictureURL,Bio")]Actor actor)
-        {
-            if(!ModelState.IsValid)
-            {
-            return View(actor);
-            }
-            _service.Add(actor);    
-            return RedirectToAction(nameof(Index)); 
-        }*/
-
-
         [HttpPost]
         public async Task<IActionResult> Create([Bind("FullName,ProfilePictureURL,Bio")] Actor actor)
         {
@@ -65,13 +52,37 @@ namespace Movies_E_Tiket.Controllers
 
             if(actorDetails== null) 
             { 
-              return View("Empty");
+              return View("NotFound");
             }
 
             return View(actorDetails);
         }
 
+        //Get: Actors/Create
+        public async Task<IActionResult> Edit(int id)
+        {
+            var actorDetails = await _service.GetByIdAsync(id);
 
+            if (actorDetails == null)
+            {
+                return View("NotFound");
+            }
+
+            return View(actorDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id,[Bind("Id,FullName,ProfilePictureURL,Bio")] Actor actor)
+        {
+            if (ModelState.IsValid)
+            {
+                await _service.UpdateAsync(id,actor);
+
+                return RedirectToAction(nameof(Index));
+
+            }
+            return View(actor);
+        }
 
     }
 }
