@@ -15,7 +15,7 @@ namespace Movies_E_Tiket.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allMovies = await _context.Movies.ToListAsync();
+            var allMovies = await _context.Movies.OrderBy(n => n.Name).ToListAsync();
             return View(allMovies);
         }
     }
