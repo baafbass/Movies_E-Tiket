@@ -20,5 +20,11 @@ namespace Movies_E_Tiket.Controllers
 
             return View(data);
         }
+
+        //Get: Actors/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
