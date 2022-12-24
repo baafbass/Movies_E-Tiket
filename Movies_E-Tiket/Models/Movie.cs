@@ -22,6 +22,7 @@ namespace Movies_E_Tiket.Models
          //Producer
          public int ProducerId { get; set; }
          [ForeignKey("ProducerId")]
-         public Producer Producer { get; set; } 
+         public Producer Producer { get; set; }
+
     }
 }

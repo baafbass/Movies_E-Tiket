@@ -93,7 +93,7 @@ namespace Movies_E_Tiket.Data
                     });
                     context.SaveChanges();
                 }
-                //Movies
+
                 if (!context.Movies.Any())
                 {
                     context.Movies.AddRange(new List<Movie>()
@@ -166,7 +166,6 @@ namespace Movies_E_Tiket.Data
                         }
                     });
                     context.SaveChanges();
-
                 }
                 //Actors & Movies
                 if (!context.Actors_Movies.Any())
