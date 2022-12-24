@@ -19,7 +19,7 @@ namespace Movies_E_Tiket.Controllers
         {
 
             var allProducers = await _context.Producers.ToListAsync();
-            return View();
+            return View(allProducers);
         }
     }
 }
