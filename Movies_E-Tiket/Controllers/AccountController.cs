@@ -10,7 +10,6 @@ namespace Movies_E_Tiket.Controllers
 {
     public class AccountController : Controller
     {
-
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly AppDbContext _context;
@@ -98,9 +97,11 @@ namespace Movies_E_Tiket.Controllers
             return View();
         }
 
-        /*public IActionResult Index()
-        {
-            return View();
-        }*/
     }
+
+    /*public IActionResult Index()
+    {
+        return View();
+    }*/
 }
+

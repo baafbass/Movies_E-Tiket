@@ -15,8 +15,10 @@
                                         <p class="card-text">
                                             <h5 class="card-title">
                                                 @item.Name
+                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                    {
                                                 <a class="text-white float-right"><i class="bi bi-pencil-square"></i></a>
-                                            </h5>
+                                     }  </h5>
                                         </p>
                                     </div>
                                 </div>
@@ -62,3 +64,5 @@
                     </div>
                 }
 </div>
+
+@await Html.PartialAsync("_CreateItem", "Movies")

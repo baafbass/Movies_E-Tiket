@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Movies_E_Tiket.Data;
 using Movies_E_Tiket.Data.Services;
+using Movies_E_Tiket.Data.Static;
 using Movies_E_Tiket.Models;
+using System.Data;
 
 namespace Movies_E_Tiket.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class ActorsController : Controller
     {
         private readonly IActorsService _service;
@@ -14,7 +18,7 @@ namespace Movies_E_Tiket.Controllers
         {
             _service = service; 
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
 

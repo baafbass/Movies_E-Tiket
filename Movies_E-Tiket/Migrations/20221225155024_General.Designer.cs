@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Movies_E_Tiket.Data;
 
@@ -11,9 +12,11 @@ using Movies_E_Tiket.Data;
 namespace MoviesETiket.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221225155024_General")]
+    partial class General
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -178,7 +181,7 @@ namespace MoviesETiket.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Actors", (string)null);
+                    b.ToTable("Actors");
                 });
 
             modelBuilder.Entity("Movies_E_Tiket.Models.Actor_Movie", b =>
@@ -193,7 +196,7 @@ namespace MoviesETiket.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("Actors_Movies", (string)null);
+                    b.ToTable("Actors_Movies");
                 });
 
             modelBuilder.Entity("Movies_E_Tiket.Models.ApplicationUser", b =>
@@ -304,7 +307,7 @@ namespace MoviesETiket.Migrations
 
                     b.HasIndex("ProducerId");
 
-                    b.ToTable("Movies", (string)null);
+                    b.ToTable("Movies");
                 });
 
             modelBuilder.Entity("Movies_E_Tiket.Models.Order", b =>
@@ -327,7 +330,7 @@ namespace MoviesETiket.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Movies_E_Tiket.Models.OrderItem", b =>
@@ -356,7 +359,7 @@ namespace MoviesETiket.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderItems", (string)null);
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("Movies_E_Tiket.Models.Producer", b =>
@@ -381,7 +384,7 @@ namespace MoviesETiket.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Producers", (string)null);
+                    b.ToTable("Producers");
                 });
 
             modelBuilder.Entity("Movies_E_Tiket.Models.ShoppingCartItem", b =>
@@ -406,7 +409,7 @@ namespace MoviesETiket.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("ShoppingCartItems", (string)null);
+                    b.ToTable("ShoppingCartItems");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
