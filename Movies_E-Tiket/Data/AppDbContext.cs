@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Movies_E_Tiket.Models;
 using System.Drawing;
 
 namespace Movies_E_Tiket.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<ApplicationUser> /*DbContext*/
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
