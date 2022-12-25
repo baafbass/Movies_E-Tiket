@@ -19,9 +19,11 @@ namespace Movies_E_Tiket.Data.Services
            await _context.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await _context.Actors.FirstOrDefaultAsync(n => n.Id == id);
+            _context.Actors.Remove(result);
+            await _context.SaveChangesAsync();  
         }
 
         public async Task<IEnumerable<Actor>> GetAllAsync()
