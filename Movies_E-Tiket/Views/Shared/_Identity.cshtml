@@ -19,23 +19,19 @@ else
         <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-toggle="dropdown"
             aria-expanded="false">
             <i class="bi bi-person-badge"></i> Hello @UserManager.GetUserName(User)
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="profile-btn">
-            <li>
-                <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
-                    <i class="bi bi-list"></i> Orders
-                </a>
-            </li>
+
+            <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
+                <i class="bi bi-list"></i> Orders
+            </a>
 
             @if (User.IsInRole("Admin"))
             {
-                <li>
-                    <a class="dropdown-item" asp-controller="Account" asp-action="Users">
+                 <a class="dropdown-item" asp-controller="Account" asp-action="Users">
                         <i class="bi bi-people"></i> Users
                     </a>
-                </li>
             }
-        </ul>
+        </button>
+                
     </div>
     <span style="padding: 5px;"></span>
     <form asp-controller="Account" asp-action="Logout">
