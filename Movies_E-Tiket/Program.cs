@@ -1,12 +1,15 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Movies_E_Tiket.Data;
 using Movies_E_Tiket.Data.Cart;
 using Movies_E_Tiket.Data.Services;
 using Movies_E_Tiket.Models;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +38,35 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddControllersWithViews();
 
+//Multiple Language 
+
+builder.Services.AddLocalization(opt => { opt.ResourcesPath = "Resources"; });
+
+builder.Services.AddMvc()
+    .AddViewLocalization()
+    .AddDataAnnotationsLocalization();
+
+builder.Services.Configure<RequestLocalizationOptions>(opt =>
+{
+    var supportedCultures = new List<CultureInfo>
+    {
+        new CultureInfo("en-US"),
+        new CultureInfo("tr-TR"),
+        new CultureInfo("fr-FR")
+    };
+
+    opt.DefaultRequestCulture = new RequestCulture("en-US");
+    opt.SupportedCultures = supportedCultures;
+    opt.SupportedUICultures = supportedCultures;
+
+    opt.RequestCultureProviders = new List<IRequestCultureProvider>
+    {
+        new QueryStringRequestCultureProvider(),
+        new CookieRequestCultureProvider(),
+        new AcceptLanguageHeaderRequestCultureProvider()
+    };
+}
+);
 
 
 var app = builder.Build();
@@ -58,6 +90,9 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseAuthorization();
+
+var options = ((IApplicationBuilder)app).ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+app.UseRequestLocalization(options.Value);
 
 app.MapControllerRoute(
     name: "default",

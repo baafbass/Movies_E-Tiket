@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using Movies_E_Tiket.Data;
 using Movies_E_Tiket.Data.Static;
 using Movies_E_Tiket.Data.ViewModels;
 using Movies_E_Tiket.Models;
+using System.Globalization;
 
 namespace Movies_E_Tiket.Controllers
 {
@@ -14,11 +16,15 @@ namespace Movies_E_Tiket.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly AppDbContext _context;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, AppDbContext context)
+        //Multiple Language
+
+       private readonly IStringLocalizer<AccountController> _localizer;
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, AppDbContext context, IStringLocalizer<AccountController> localizer)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
+           _localizer = localizer;
         }
 
 
@@ -62,6 +68,15 @@ namespace Movies_E_Tiket.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterVM registerVM)
         {
+            /*var say_hello_value = _localizer["Say_Hello"];
+
+            var cultureInfo = CultureInfo.GetCultureInfo("en-US");  
+            Thread.CurrentThread.CurrentCulture = cultureInfo;
+            Thread.CurrentThread.CurrentUICulture = cultureInfo;
+
+            var say_hello_value2 = _localizer["Say_Hello"];*/
+
+
             if (!ModelState.IsValid) return View(registerVM);
 
             var user = await _userManager.FindByEmailAsync(registerVM.EmailAddress);
@@ -98,10 +113,5 @@ namespace Movies_E_Tiket.Controllers
         }
 
     }
-
-    /*public IActionResult Index()
-    {
-        return View();
-    }*/
 }
 

@@ -5,7 +5,7 @@ namespace Movies_E_Tiket.Data.ViewModels
     public class RegisterVM
     {
         [Display(Name = "Full name")]
-        [Required(ErrorMessage = "Full name is required")]
+        [Required(ErrorMessage = "NameSurname_Required")]
         public string FullName { get; set; }
 
         [Display(Name = "Email address")]
