@@ -1,12 +1,19 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Localization;
 using Movies_E_Tiket.Data;
 using Movies_E_Tiket.Data.Static;
 using Movies_E_Tiket.Data.ViewModels;
 using Movies_E_Tiket.Models;
-using System.Globalization;
+
+using System.Reflection;
+using Microsoft.Extensions.Localization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Web.Services3.Security.Utility;
+
+[assembly: ResourceLocation("Resources")]
+[assembly: RootNamespace("Movies_E_Tiket")]
 
 namespace Movies_E_Tiket.Controllers
 {
@@ -17,14 +24,15 @@ namespace Movies_E_Tiket.Controllers
         private readonly AppDbContext _context;
 
         //Multiple Language
+        //private readonly IStringLocalizer<AccountController> _localizer;
 
-       private readonly IStringLocalizer<AccountController> _localizer;
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, AppDbContext context, IStringLocalizer<AccountController> localizer)
+        private readonly IHtmlLocalizer<AccountController> _localizer;
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, AppDbContext context, IHtmlLocalizer<AccountController> localizer/*, IStringLocalizer<AccountController> localizer*/)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
-           _localizer = localizer;
+            _localizer = localizer;
         }
 
 
@@ -63,14 +71,32 @@ namespace Movies_E_Tiket.Controllers
         }
 
 
-        public IActionResult Register() => View(new RegisterVM());
+        public IActionResult Register() 
+            {
+            var signup = _localizer["SignUp"];
+            ViewData["SignUp"] = signup;
+
+            return View(new RegisterVM());
+            }
+
+        [HttpPost]
+        public IActionResult CultureManagement(string culture,string returnUrl) 
+        {
+            Response.Cookies.Append(CookieRequestCultureProvider.DefaultCookieName, CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.Now.AddDays(30)});
+
+            return LocalRedirect(returnUrl);
+        }
+
+
+
 
         [HttpPost]
         public async Task<IActionResult> Register(RegisterVM registerVM)
         {
-            /*var say_hello_value = _localizer["Say_Hello"];
+           
 
-            var cultureInfo = CultureInfo.GetCultureInfo("en-US");  
+           /* var cultureInfo = CultureInfo.GetCultureInfo("en-US");  
             Thread.CurrentThread.CurrentCulture = cultureInfo;
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
 

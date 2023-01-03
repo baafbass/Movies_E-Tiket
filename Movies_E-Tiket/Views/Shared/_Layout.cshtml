@@ -34,6 +34,10 @@
                                     <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i> Actors</a>
                          </li>
                         }
+
+                        <li class="nav-link">
+                            <partial name="_Culture" />
+                        </li>
                     </ul>
 
                     <form class="form-inline my-2 my-lg-0" asp-controller="Movies" asp-action="Filter" style="padding-right: 25px;">

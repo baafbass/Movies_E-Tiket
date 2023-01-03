@@ -117,13 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NameSurname" xml:space="preserve">
-    <value>Adınız Soyadınız</value>
-  </data>
-  <data name="NameSurname_Required" xml:space="preserve">
-    <value>Ad ve Soyad Zorunlu </value>
-  </data>
-  <data name="SignUp" xml:space="preserve">
-    <value>Yeni Hesabı acınız</value>
+  <data name="HelloWorld" xml:space="preserve">
+    <value>Bonjour Tout le Monde</value>
   </data>
 </root>

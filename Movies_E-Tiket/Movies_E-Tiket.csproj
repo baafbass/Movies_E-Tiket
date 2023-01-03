@@ -8,14 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Resources\Controllers\**" />
-    <Content Remove="Resources\Controllers\**" />
-    <EmbeddedResource Remove="Resources\Controllers\**" />
-    <None Remove="Resources\Controllers\**" />
+    <Compile Remove="Controllers\UserController.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\UserController.cs" />
+    <EmbeddedResource Remove="Resources\Views\Account\Register.en.resx" />
+    <EmbeddedResource Remove="Resources\Views\Account\Register.fr.resx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +29,26 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Web.Services3" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Views\Account\Register.fr.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </Resource>
+    <Resource Include="Resources\Views\Account\Register.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Controllers\AccountController.tr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

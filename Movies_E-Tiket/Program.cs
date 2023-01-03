@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,37 +37,26 @@ builder.Services.AddAuthentication(options =>
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 });
 
-builder.Services.AddControllersWithViews();
+
 
 //Multiple Language 
 
 builder.Services.AddLocalization(opt => { opt.ResourcesPath = "Resources"; });
-
-builder.Services.AddMvc()
-    .AddViewLocalization()
-    .AddDataAnnotationsLocalization();
-
+builder.Services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
 builder.Services.Configure<RequestLocalizationOptions>(opt =>
+
 {
     var supportedCultures = new List<CultureInfo>
     {
-        new CultureInfo("en-US"),
-        new CultureInfo("tr-TR"),
-        new CultureInfo("fr-FR")
+     new CultureInfo("en"),
+     new CultureInfo("fr"),
+     new CultureInfo("tr"),
     };
-
-    opt.DefaultRequestCulture = new RequestCulture("en-US");
-    opt.SupportedCultures = supportedCultures;
-    opt.SupportedUICultures = supportedCultures;
-
-    opt.RequestCultureProviders = new List<IRequestCultureProvider>
-    {
-        new QueryStringRequestCultureProvider(),
-        new CookieRequestCultureProvider(),
-        new AcceptLanguageHeaderRequestCultureProvider()
-    };
-}
-);
+    opt.DefaultRequestCulture = new RequestCulture("en");
+    opt.SupportedCultures= supportedCultures;   
+    opt.SupportedUICultures= supportedCultures; 
+});
+builder.Services.AddControllersWithViews();
 
 
 var app = builder.Build();
@@ -89,10 +79,14 @@ app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseAuthorization();
+app.UseRequestLocalization(((IApplicationBuilder)app).ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
 
-var options = ((IApplicationBuilder)app).ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
-app.UseRequestLocalization(options.Value);
+/*var supportedCultures = new[] { "en", "fr", "tr" };
+var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0])
+    .AddSupportedCultures(supportedCultures)
+    .AddSupportedUICultures(supportedCultures);
+
+app.UseRequestLocalization(localizationOptions);*/
 
 app.MapControllerRoute(
     name: "default",
