@@ -120,6 +120,9 @@
   <data name="Log" xml:space="preserve">
     <value>Log in</value>
   </data>
+  <data name="LogO" xml:space="preserve">
+    <value>Log Out</value>
+  </data>
   <data name="Orders" xml:space="preserve">
     <value>Orders</value>
   </data>

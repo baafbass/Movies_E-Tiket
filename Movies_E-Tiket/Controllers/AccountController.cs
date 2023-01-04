@@ -24,10 +24,8 @@ namespace Movies_E_Tiket.Controllers
         private readonly AppDbContext _context;
 
         //Multiple Language
-        //private readonly IStringLocalizer<AccountController> _localizer;
-
         private readonly IHtmlLocalizer<AccountController> _localizer;
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, AppDbContext context, IHtmlLocalizer<AccountController> localizer/*, IStringLocalizer<AccountController> localizer*/)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, AppDbContext context, IHtmlLocalizer<AccountController> localizer)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -94,15 +92,6 @@ namespace Movies_E_Tiket.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterVM registerVM)
         {
-           
-
-           /* var cultureInfo = CultureInfo.GetCultureInfo("en-US");  
-            Thread.CurrentThread.CurrentCulture = cultureInfo;
-            Thread.CurrentThread.CurrentUICulture = cultureInfo;
-
-            var say_hello_value2 = _localizer["Say_Hello"];*/
-
-
             if (!ModelState.IsValid) return View(registerVM);
 
             var user = await _userManager.FindByEmailAsync(registerVM.EmailAddress);

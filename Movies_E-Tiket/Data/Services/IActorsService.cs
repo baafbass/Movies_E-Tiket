@@ -3,13 +3,6 @@ using Movies_E_Tiket.Models;
 
 namespace Movies_E_Tiket.Data.Services
 {
-
-   /* public interface IActorsService : IEntityBaseRepository<Actor>
-    {
-    }*/
-
-
-
       public interface IActorsService
       {
          Task<IEnumerable<Actor>> GetAllAsync();

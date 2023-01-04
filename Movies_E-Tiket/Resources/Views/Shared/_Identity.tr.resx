@@ -120,6 +120,9 @@
   <data name="Log" xml:space="preserve">
     <value>Giriş Yapın</value>
   </data>
+  <data name="LogO" xml:space="preserve">
+    <value>Cıkış</value>
+  </data>
   <data name="Orders" xml:space="preserve">
     <value>Sepet</value>
   </data>

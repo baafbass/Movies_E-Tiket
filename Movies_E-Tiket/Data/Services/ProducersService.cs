@@ -5,14 +5,6 @@ using Movies_E_Tiket.Models;
 
 namespace Movies_E_Tiket.Data.Services
 {
-    /* public class ProducersService : EntityBaseRepository<Producer>, IProducersService
-     {
-         public ProducersService(AppDbContext context) : base(context)
-         {
-         }
-     }*/
-
-
     public class ProducersService : IProducersService
     {
         private readonly AppDbContext _context;

@@ -3,9 +3,6 @@ using Movies_E_Tiket.Models;
 
 namespace Movies_E_Tiket.Data.Services
 {
-    /*public interface IProducersService : IEntityBaseRepository<Producer>
-    {
-    }*/
 
 
     public interface IProducersService

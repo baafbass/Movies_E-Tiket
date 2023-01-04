@@ -21,7 +21,6 @@ namespace Movies_E_Tiket.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-
             var data= await _service.GetAllAsync();
 
             return View(data);
