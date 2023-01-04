@@ -1,14 +1,20 @@
 ﻿@inject UserManager<ApplicationUser> UserManager;
 
+
+
+@using System.Reflection;
+@using Microsoft.Extensions.Localization;
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
 @if (!User.Identity.IsAuthenticated)
 {
     <a class="btn btn-outline-success my-2 my-sm-0" asp-controller="Account" asp-action="Login">
-        <i class="bi bi-box-arrow-in-right"></i> Log in
+        <i class="bi bi-box-arrow-in-right"></i> @localizer["Log"]
     </a>
     <span style="padding: 5px;"></span>
 
     <a class="btn btn-outline-primary my-2 my-sm-0" asp-controller="Account" asp-action="Register">
-        <i class="bi bi-person-plus"></i> Register
+        <i class="bi bi-person-plus"></i> @localizer["Regis"]
     </a>
 }
 else
@@ -21,13 +27,13 @@ else
             <i class="bi bi-person-badge"></i> Hello @UserManager.GetUserName(User)
 
             <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
-                <i class="bi bi-list"></i> Orders
+                <i class="bi bi-list"></i> @localizer["Orders"]
             </a>
 
             @if (User.IsInRole("Admin"))
             {
                  <a class="dropdown-item" asp-controller="Account" asp-action="Users">
-                        <i class="bi bi-people"></i> Users
+                        <i class="bi bi-people"></i> @localizer["Users"]
                     </a>
             }
         </button>
