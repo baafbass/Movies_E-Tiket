@@ -117,7 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SignUp" xml:space="preserve">
-    <value>Créer un nouveau compte</value>
+  <data name="Confirmpassword_required" xml:space="preserve">
+    <value>Confirm password is required</value>
+  </data>
+  <data name="Confirm_password" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="Email_address" xml:space="preserve">
+    <value>Email address</value>
+  </data>
+  <data name="Email_required" xml:space="preserve">
+    <value>Email is Required</value>
+  </data>
+  <data name="Full_name" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+  <data name="NameSurname_Required" xml:space="preserve">
+    <value>Name is required</value>
+  </data>
+  <data name="password" xml:space="preserve">
+    <value>Password</value>
   </data>
 </root>

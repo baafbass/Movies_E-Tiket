@@ -5,10 +5,10 @@ using Movies_E_Tiket.Models;
 
 namespace Movies_E_Tiket.Data.Services
 {
-   /* public class MoviesService : EntityBaseRepository<Movie>, IMoviesService
+    public class MoviesService : IMoviesService
     {
         private readonly AppDbContext _context;
-        public MoviesService(AppDbContext context) : base(context)
+        public MoviesService(AppDbContext context)
         {
             _context = context;
         }
@@ -41,6 +41,7 @@ namespace Movies_E_Tiket.Data.Services
             }
             await _context.SaveChangesAsync();
         }
+
 
         public async Task<Movie> GetMovieByIdAsync(int id)
         {
@@ -98,7 +99,7 @@ namespace Movies_E_Tiket.Data.Services
             await _context.SaveChangesAsync();
         }
     }
-    */
+    
 
 
 
@@ -107,7 +108,7 @@ namespace Movies_E_Tiket.Data.Services
 
 
 
-    public class MoviesService : IMoviesService
+    /*public class MoviesService : IMoviesService
      {
          private readonly AppDbContext _context;
          public MoviesService(AppDbContext context) 
@@ -199,5 +200,5 @@ namespace Movies_E_Tiket.Data.Services
              }
              await _context.SaveChangesAsync();
          }
-     }
+     }*/
 }

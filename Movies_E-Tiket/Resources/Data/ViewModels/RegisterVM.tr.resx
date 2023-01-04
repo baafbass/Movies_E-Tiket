@@ -117,7 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SignUp" xml:space="preserve">
-    <value>Créer un nouveau compte</value>
+  <data name="Confirmpassword_required" xml:space="preserve">
+    <value>Şifrenizin tespidi Zorunludur</value>
+  </data>
+  <data name="Confirm_password" xml:space="preserve">
+    <value>Şifreniz tespit ediniz</value>
+  </data>
+  <data name="Email_address" xml:space="preserve">
+    <value>Email addresi</value>
+  </data>
+  <data name="Email_required" xml:space="preserve">
+    <value>Email Zorunludur</value>
+  </data>
+  <data name="Full_name" xml:space="preserve">
+    <value>Adınız ve Soyadınız</value>
+  </data>
+  <data name="NameSurname_Required" xml:space="preserve">
+    <value>İsiminiz Zorunludur</value>
+  </data>
+  <data name="password" xml:space="preserve">
+    <value>Şifre</value>
   </data>
 </root>

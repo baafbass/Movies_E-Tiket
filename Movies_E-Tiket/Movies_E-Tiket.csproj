@@ -12,11 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Remove="Resources\Views\Account\Register.en.resx" />
-    <EmbeddedResource Remove="Resources\Views\Account\Register.fr.resx" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Properties\ServiceDependencies\etickets-app - Web Deploy\profile.arm.json" />
   </ItemGroup>
 
@@ -35,6 +30,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Views\Account\Register.tr.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </Resource>
     <Resource Include="Resources\Views\Account\Register.fr.resx">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -42,6 +41,18 @@
     <Resource Include="Resources\Views\Account\Register.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Views\Shared\_Culture.en.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </Resource>
+    <Resource Include="Resources\Views\Shared\_Culture.tr.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </Resource>
+    <Resource Include="Resources\Views\Shared\_Culture.fr.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <Generator>PublicResXFileCodeGenerator</Generator>
     </Resource>
   </ItemGroup>
 

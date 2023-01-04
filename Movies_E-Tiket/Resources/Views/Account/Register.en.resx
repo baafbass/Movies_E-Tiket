@@ -117,7 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="HelloWorld" xml:space="preserve">
-    <value>Hello World !</value>
+  <data name="NameSurname_Required" xml:space="preserve">
+    <value>Name is Required</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Sign Up for your new account</value>
   </data>
 </root>

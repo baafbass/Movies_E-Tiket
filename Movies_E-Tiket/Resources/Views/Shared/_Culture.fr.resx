@@ -117,7 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SignUp" xml:space="preserve">
-    <value>Créer un nouveau compte</value>
+  <data name="en" xml:space="preserve">
+    <value>Anglais</value>
+  </data>
+  <data name="fr" xml:space="preserve">
+    <value>Français</value>
+  </data>
+  <data name="tr" xml:space="preserve">
+    <value>Turque</value>
   </data>
 </root>
