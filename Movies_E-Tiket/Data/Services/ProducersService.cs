@@ -34,9 +34,9 @@ namespace Movies_E_Tiket.Data.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Actor>> GetAllAsync()
+        public async Task<IEnumerable<Producer>> GetAllAsync()
         {
-            var result = await _context.Actors.ToListAsync();
+            var result = await _context.Producers.ToListAsync();
             return result;
         }
 
@@ -58,12 +58,6 @@ namespace Movies_E_Tiket.Data.Services
         {
             throw new NotImplementedException();
         }
-
-        Task<IEnumerable<Producer>> IProducersService.GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-
         Task<Producer> IProducersService.GetByIdAsync(int id)
         {
             throw new NotImplementedException();
