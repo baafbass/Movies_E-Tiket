@@ -1,14 +1,19 @@
 ﻿@using Movies_E_Tiket.Data.ViewModels;
 @model LoginVM;
 
+@using System.Reflection;
+@using Microsoft.Extensions.Localization;
+
 @{
     ViewData["Title"] = "Log in to your account";
 }
 
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
 <div class="row">
     <div class="col-md-6 offset-3">
         <p>
-            <h4>Log in to your account</h4>
+            <h4>@localizer["Login"]</h4>
         </p>
 
         @if (TempData["Error"] != null)
@@ -35,8 +40,8 @@
                     </div>
 
                     <div class="form-group">
-                        <input class="btn btn-outline-success float-right" type="submit" value="Log in" />
-                        <a class="btn btn-outline-secondary" asp-controller="Movies" asp-action="Index">Cancel</a>
+                        <input class="btn btn-outline-success float-right" type="submit" value="@localizer["enter"]" />
+                        <a class="btn btn-outline-secondary" asp-controller="Movies" asp-action="Index">@localizer["Cancel"]</a>
                     </div>
                 </form>
             </div>

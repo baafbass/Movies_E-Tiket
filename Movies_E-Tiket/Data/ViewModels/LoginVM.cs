@@ -4,10 +4,11 @@ namespace Movies_E_Tiket.Data.ViewModels
 {
     public class LoginVM
     {
-        [Display(Name = "Email address")]
-        [Required(ErrorMessage = "Email address is required")]
+        [Display(Name = "Email_address")]
+        [Required(ErrorMessage = "Emailaddressrequired")]
         public string EmailAddress { get; set; }
 
+        [Display(Name = "Password")]
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
